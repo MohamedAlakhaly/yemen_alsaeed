@@ -32,8 +32,8 @@ const ContactPage = () => {
               </h1>
 
               <p className="text-muted-foreground text-lg lg:text-xl max-w-md">
-                We'd love to hear from you. Send us a message and we'll respond
-                as soon as possible.
+                {`We'd love to hear from you. Send us a message and we'll respond
+                as soon as possible.`}
               </p>
 
               <div className="flex items-center space-x-4 pt-4">
@@ -197,8 +197,8 @@ const ContactPage = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Find Us</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Located in the heart of Sana'a, we're easy to find and always
-              ready to welcome you.
+              {`Located in the heart of Sana'a, we're easy to find and always
+              ready to welcome you.`}
             </p>
           </div>
 

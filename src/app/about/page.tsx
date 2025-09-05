@@ -1,8 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Coffee, MapPin, Phone, Utensils } from "lucide-react";
+import { Coffee, MapPin, Utensils } from "lucide-react";
 const AboutUs = () => {
   return (
     <div className="min-h-screen">
