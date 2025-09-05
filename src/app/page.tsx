@@ -1,103 +1,117 @@
-import Image from "next/image";
-
-export default function Home() {
+import React from 'react'
+import Navbar from '@/components/navbar/Navbar'
+import { HomeCarousel } from '@/components/carousel/HomeCarousel'
+import { Star } from 'lucide-react'
+const Home = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <main className="min-h-screen bg-gradient-to-b from-background to-background/90 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[url('/assets/bg.svg')] opacity-10 pointer-events-none" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <Navbar />
+
+      {/* Hero Section - Added consistent padding */}
+      <section className="container mx-auto pt-24 lg:pt-32 pb-16 px-6 sm:px-8 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="flex flex-col space-y-8">
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium">
+              <Star className="h-4 w-4 mr-2 fill-primary" />
+              <span>Authentic Yemeni Cuisine</span>
+            </div>
+
+            <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
+              Yemeni flavor
+              <br /> with{" "}
+              <span className="text-primaryColor relative">
+                a<span className="absolute -bottom-2 left-0 w-full h-2 bg-primaryColor/20 rounded-full"></span>
+              </span>{" "}
+              modern spirit
+            </h1>
+
+            <p className="text-muted-foreground text-lg lg:text-xl max-w-md">
+              Discover the most delicious Yemeni dishes with a new style that combines authenticity and modern taste.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              {/* <CustomButton link={"/menu"} />
+              <Link
+                href="/about"
+                className="group inline-flex items-center justify-center px-6 py-3 rounded-md text-foreground hover:text-primary transition-colors"
+              >
+                Learn more
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link> */}
+            </div>
+
+            <div className="flex items-center space-x-4 pt-4">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-medium"
+                  >
+                    {i}
+                  </div>
+                ))}
+              </div>
+              <div className="text-sm">
+                <span className="font-bold">500+</span> happy customers this week
+              </div>
+            </div>
+          </div>
+
+          <div className="relative">
+            {/* Decorative elements */}
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primaryColor/10 rounded-full blur-3xl" />
+
+            {/* Main carousel with styling - Increased size */}
+            <div className="relative z-10 bg-gradient-to-b from-background/5 to-background/20 p-6 rounded-2xl backdrop-blur-sm border border-border/40">
+              <HomeCarousel />
+
+              {/* Featured badge */}
+              <div className="absolute -top-3 -right-3 bg-primaryColor text-black font-medium px-4 py-1 rounded-full text-sm shadow-lg">
+                Featured
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Section - Added consistent padding */}
+      <section className="container mx-auto py-16 px-6 sm:px-8 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Traditional Recipes",
+              description: "Authentic Yemeni recipes passed down through generations",
+            },
+            {
+              title: "Modern Twist",
+              description: "Classic dishes reimagined with contemporary techniques",
+            },
+            {
+              title: "Quality Ingredients",
+              description: "Locally sourced, fresh ingredients for the best flavor",
+            },
+          ].map((feature, i) => (
+            <div
+              key={i}
+              className="bg-background/50 backdrop-blur-sm p-6 rounded-xl border border-border/50 hover:border-primary/50 transition-colors group"
+            >
+              <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {i + 1}
+              </div>
+              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
     </div>
-  );
+  )
 }
+
+export default Home
