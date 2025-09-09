@@ -9,10 +9,10 @@ const AboutUs = () => {
       <Navbar />
       <div className="relative h-[40vh] mt-15 w-full overflow-hidden">
         <Image
-          src="/assets/logo.png"
+          src="/assets/logo.jpg"
           alt="Traditional Yemeni cuisine"
           fill
-          className="object-cover brightness-75"
+          className="object-cover brightness-50"
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">

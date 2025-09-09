@@ -1,8 +1,7 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { db } from "../../firebaseConfig"; // ✅ عدل المسار إذا غير
+import { db } from "../../firebaseConfig";
 import {
   doc,
   getDoc,
@@ -18,13 +17,8 @@ import Image from "next/image";
 import {
   ArrowLeft,
   Clock,
-  Heart,
-  Minus,
-  Plus,
-  ShoppingCart,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import ProductsCard from "@/components/card/ProductsCard";
 
 // ✅ تعريف النوع بشكل واضح
 interface Product {
@@ -35,6 +29,7 @@ interface Product {
   image: string;
   category: string;
   description?: string;
+  ingredients?: string[];
   isNew?: boolean;
   isPopular?: boolean;
 }
@@ -46,8 +41,7 @@ export default function ProductDetails() {
 
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [quantity, setQuantity] = useState(1);
-  const [isFav, setIsFav] = useState(false);
+
 
   // 🔹 تحميل المنتج من Firestore
   useEffect(() => {
@@ -105,9 +99,10 @@ export default function ProductDetails() {
 
         {/* تفاصيل المنتج */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
           {/* صورة المنتج */}
           <motion.div
-            className="relative rounded-2xl overflow-hidden bg-muted/30 border p-8 flex items-center justify-center"
+            className="relative rounded-2xl  bg-muted/30 border p-8 flex items-center justify-center"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -117,19 +112,14 @@ export default function ProductDetails() {
               alt={product.name}
               width={500}
               height={500}
-              className="w-full max-w-md h-auto object-contain"
+              className="h-96 w-full max-w-md object-contain"
             />
 
             {/* Badges */}
-            <div className="absolute top-4 left-4 flex flex-col gap-2">
-              {product.isPopular && (
-                <Badge className="bg-primary text-primary-foreground">
-                  Popular
+            <div className="absolute top-4 left-4">
+                <Badge className="bg-white text-black font-bold text-sm">
+                  {product.category}
                 </Badge>
-              )}
-              {product.isNew && (
-                <Badge className="bg-green-500 text-white">New</Badge>
-              )}
             </div>
           </motion.div>
 
@@ -151,7 +141,7 @@ export default function ProductDetails() {
               )}
             </div>
 
-            <p className="text-2xl font-bold mb-6">€{product.price}</p>
+            <p className="text-2xl font-bold mb-6">€{product.price.toFixed(2)} </p>
 
             {product.description && (
               <p className="text-muted-foreground mb-8">
@@ -159,67 +149,21 @@ export default function ProductDetails() {
               </p>
             )}
 
-            {/* الكمية + زر السلة */}
-            <div className="flex items-center gap-4 mt-auto">
-              <div className="flex items-center border rounded-full overflow-hidden">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-none h-10 w-10"
-                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                >
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <span className="w-10 text-center font-medium">{quantity}</span>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-none h-10 w-10"
-                  onClick={() => setQuantity((prev) => prev + 1)}
-                >
-                  <Plus className="h-4 w-4" />
-                </Button>
+            {product.ingredients && product.ingredients.length > 0 && (
+              <div>
+                <p className="text-xl font-medium mb-6">Ingredients</p>
+                <div className="mb-8 flex gap-5">
+                  {product.ingredients.map((item: string, index: number) => (
+                    <p className="bg-muted/30 px-5 py-1 rounded-3xl border" key={index}>{item}</p>
+                  ))}
+                </div>
               </div>
-
-              <Button className="flex-1 gap-2" size="lg">
-                <ShoppingCart className="h-5 w-5" />
-                Add to Cart
-              </Button>
-
-              <Button
-                variant="outline"
-                size="icon"
-                className={`h-12 w-12 rounded-full ${
-                  isFav ? "text-red-500" : ""
-                }`}
-                onClick={() => setIsFav(!isFav)}
-              >
-                <Heart className={`h-5 w-5 ${isFav ? "fill-current" : ""}`} />
-              </Button>
-            </div>
+            )}
           </motion.div>
         </div>
 
-        {/* منتجات مشابهة */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-20">
-            <h2 className="text-2xl font-bold mb-8">You might also like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((p) => (
-                <ProductsCard
-                  key={p.id}
-                  id={p.id}
-                  name={p.name}
-                  price={p.price}
-                  time={p.time}
-                  image={p.image}
-                  isPopular={p.isPopular}
-                  isNew={p.isNew}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+
+
       </div>
     </div>
   );

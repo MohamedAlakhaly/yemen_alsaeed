@@ -27,8 +27,8 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <Image
-            className="w-10 h-10 group-hover:rotate-12 duration-300"
-            src="/assets/logo.png"
+            className="w-10 h-10 group-hover:rotate-12 duration-300 rounded-4xl"
+            src="/assets/logo.jpg"
             alt="logo"
             width={40}
             height={40}
@@ -47,7 +47,7 @@ export default function Navbar() {
                   href="/"
                   className={
                     isActive("/")
-                      ? "text-base font-medium border-b-2 border-primary pb-1"
+                      ? "text-base font-medium border-b-2 border-primaryColor pb-1"
                       : "text-base text-muted-foreground hover:text-foreground transition-colors"
                   }
                 >
@@ -60,7 +60,7 @@ export default function Navbar() {
                   href="/menu"
                   className={
                     isActive("/menu") || pathname!.startsWith("/menu/")
-                      ? "text-base font-medium border-b-2 border-primary pb-1"
+                      ? "text-base font-medium border-b-2 border-primaryColor pb-1"
                       : "text-base text-muted-foreground hover:text-foreground transition-colors"
                   }
                 >
@@ -75,7 +75,7 @@ export default function Navbar() {
                   href="/about"
                   className={
                     isActive("/about")
-                      ? "text-base font-medium border-b-2 border-primary pb-1"
+                      ? "text-base font-medium border-b-2 border-primaryColor pb-1"
                       : "text-base text-muted-foreground hover:text-foreground transition-colors"
                   }
                 >
@@ -88,7 +88,7 @@ export default function Navbar() {
                   href="/contact"
                   className={
                     isActive("/contact")
-                      ? "text-base font-medium border-b-2 border-primary pb-1"
+                      ? "text-base font-medium border-b-2 border-primaryColor pb-1"
                       : "text-base text-muted-foreground hover:text-foreground transition-colors"
                   }
                 >
@@ -119,7 +119,7 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/"
-                    className={`w-full flex px-2 py-1.5 text-sm ${isActive("/") ? "font-medium text-primary" : "hover:text-primary duration-200"}`}
+                    className={`${isActive("/") ? "text-base font-medium border-b-2 border-primaryColor pb-1" : "text-base text-muted-foreground hover:text-foreground transition-colors"}`}
                   >
                     Home
                   </Link>
@@ -127,7 +127,7 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/menu"
-                    className={`w-full flex px-2 py-1.5 text-sm ${isActive("/menu") || pathname!.startsWith("/menu/") ? "font-medium text-primary" : "hover:text-primary duration-200"}`}
+                    className={` ${isActive("/menu") || pathname!.startsWith("/menu/") ? "text-base font-medium border-b-2 border-primaryColor pb-1" : "text-base text-muted-foreground hover:text-foreground transition-colors"}`}
                   >
                     Menu
                   </Link>
@@ -136,10 +136,27 @@ export default function Navbar() {
                 <DropdownMenuItem asChild>
                   <Link
                     href="/about"
-                    className={`w-full flex px-2 py-1.5 text-sm ${isActive("/about") ? "font-medium text-primary" : "hover:text-primary duration-200"}`}
+                    className={
+                      isActive("/about")
+                        ? "text-base font-medium border-b-2 border-primaryColor pb-1"
+                        : "text-base text-muted-foreground hover:text-foreground transition-colors"
+                    }
                   >
                     About Us
                   </Link>
+                </DropdownMenuItem>
+
+                <DropdownMenuItem asChild>
+                <Link
+                  href="/contact"
+                  className={
+                    isActive("/contact")
+                      ? "text-base font-medium border-b-2 border-primaryColor pb-1"
+                      : "text-base text-muted-foreground hover:text-foreground transition-colors"
+                  }
+                >
+                  Contact Us
+                </Link>
                 </DropdownMenuItem>
 
                 

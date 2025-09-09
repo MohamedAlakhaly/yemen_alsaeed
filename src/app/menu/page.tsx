@@ -60,7 +60,7 @@ const Menu = () => {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/90 relative overflow-hidden">
+    <div className="min-h-screen container mx-auto bg-gradient-to-b from-background to-background/90 relative overflow-hidden">
       <Navbar />
       <div className="pt-16"></div>
 
