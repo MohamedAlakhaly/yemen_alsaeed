@@ -2,7 +2,29 @@ import Navbar from "@/components/navbar/Navbar";
 
 import Image from "next/image";
 import { Coffee, MapPin, Utensils } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const AboutUs = () => {
+  const values = [
+    {
+      title: "Authenticity",
+      description:
+        "We remain true to traditional Yemeni recipes and cooking methods, offering an authentic taste of Yemen in every dish.",
+      icon: Utensils,
+    },
+    {
+      title: "Hospitality",
+      description:
+        "In Yemeni culture, guests are a blessing. We strive to make every visitor feel welcomed and valued, just as they would in a Yemeni home.",
+      icon: Coffee,
+    },
+    {
+      title: "Community",
+      description:
+        "Our restaurant serves as a cultural bridge, bringing together people from different backgrounds to share in the joy of Yemeni cuisine.",
+      icon: MapPin,
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -126,49 +148,25 @@ const AboutUs = () => {
             <div className="h-0.5 w-12 bg-primaryColor" />
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="rounded-lg bg-card p-6 shadow-md transition-transform hover:scale-105">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-card-foreground">
-                <Utensils className="h-6 w-6 text-primaryColor" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-primaryColor">
-                Authenticity
-              </h3>
-              <p className="text-neutral-400">
-                We remain true to traditional Yemeni recipes and cooking
-                methods, offering an authentic taste of Yemen in every dish.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-card p-6 shadow-md transition-transform hover:scale-105">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-card-foreground">
-                <Coffee className="h-6 w-6 text-primaryColor" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-primaryColor">
-                Hospitality
-              </h3>
-              <p className="text-neutral-400">
-                In Yemeni culture, guests are a blessing. We strive to make
-                every visitor feel welcomed and valued, just as they would in a
-                Yemeni home.
-              </p>
-            </div>
-
-            <div className="rounded-lg bg-card p-6 shadow-md transition-transform hover:scale-105">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-card-foreground">
-                <MapPin className="h-6 w-6 text-primaryColor" />
-              </div>
-              <h3 className="mb-3 text-xl font-bold text-primaryColor">
-                Community
-              </h3>
-              <p className="text-neutral-400">
-                Our restaurant serves as a cultural bridge, bringing together
-                people from different backgrounds to share in the joy of Yemeni
-                cuisine.
-              </p>
-            </div>
-          </div>
         </div>
+        <div className="grid gap-8 md:grid-cols-3">
+      {values.map((value, i) => (
+        <Card
+          key={i}
+          className="bg-background/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 group hover:shadow-lg"
+        >
+          <CardHeader className="pb-4">
+            <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+              <value.icon className="h-6 w-6" />
+            </div>
+            <CardTitle className="text-xl">{value.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">{value.description}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
 
         
       

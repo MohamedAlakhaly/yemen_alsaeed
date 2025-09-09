@@ -17,23 +17,23 @@ export const metadata: Metadata = {
   title: "Yemen Al-Saeed Restaurant",
   description:
     "Authentic Yemeni cuisine with traditional dishes like Mandi, Madfoon, and Kabsa, served with rich flavors and warm hospitality.",
-    openGraph: {
-      title: "Yemen Al-Saeed Restaurant",
-      description:
-        "Experience the best of Yemeni food – Mandi, Madfoon, and more with authentic taste.",
-      url: "https://your-domain.com",
-      siteName: "Yemen Al-Saeed",
-      images: [
-        {
-          url: "assets/logo.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Yemeni Mandi and traditional food",
-        },
-      ],
-      locale: "en_US",
-      type: "website",
-    },
+    // openGraph: {
+    //   title: "Yemen Al-Saeed Restaurant",
+    //   description:
+    //     "Experience the best of Yemeni food – Mandi, Madfoon, and more with authentic taste.",
+    //   url: "https://your-domain.com",
+    //   siteName: "Yemen Al-Saeed",
+    //   images: [
+    //     {
+    //       url: "assets/logo.jpg",
+    //       width: 1200,
+    //       height: 630,
+    //       alt: "Yemeni Mandi and traditional food",
+    //     },
+    //   ],
+    //   locale: "en_US",
+    //   type: "website",
+    // },
     icons :'assets/logo.jpg'
 };
 
