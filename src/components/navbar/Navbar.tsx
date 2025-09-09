@@ -34,7 +34,7 @@ export default function Navbar() {
             height={40}
           />
           <div className="text-md md:text-xl  font-bold md:block ml-2">
-            YEMEN <span className="text-primary">AL</span>SAID
+            YEMEN <span className="text-primaryColor">AL</span>SAEED
           </div>
         </Link>
 
